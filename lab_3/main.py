@@ -1,7 +1,9 @@
 import argparse
 
 from utils import load_config
-
+from encryption import *
+from generation import *
+from decryption import *
 
 def parse_arguments() -> argparse.Namespace:
     """Функция, которая парсит аргументы командной строки"""
@@ -27,12 +29,28 @@ def main() -> None:
     
     settings = load_config("settings.json")
     
-    source = args.input or settings["initial_file"]
-    sym_key =  args.sym_key or settings["symmetric_key"]
-    public_key = args.public_key or settings["public_key"] 
-    private_key = args.private_key or settings["private_key"] 
+    path_file = args.input or settings["initial_file"]
+    path_sym_key =  args.sym_key or settings["symmetric_key"]
+    path_public_key = args.public_key or settings["public_key"] 
+    path_private_key = args.private_key or settings["private_key"] 
     
-    print(args.generation, args.encryption, args.decryption)
+    match args:
+        case _ if args.generation:
+            generate(path_sym_key, path_public_key, path_private_key)
+        case _ if args.encryption:
+            encrypt(
+                path_file, 
+                path_private_key, 
+                path_sym_key, 
+                args.output or settings["encrypted_file"]
+            )
+        case _:
+            decrypt(
+                args.input or settings["encrypted_file"],
+                path_private_key,
+                path_sym_key,
+                args.output or settings["decrypted_file"]
+            )
 
 
 if __name__ == "__main__":
