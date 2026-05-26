@@ -26,10 +26,10 @@ def load_config(path: str) -> dict:
 
 def read_binary_file(path: str) -> bytes:
     """
-    Данная функция читает бинарный файл.
+    Данная функция читает файл как бинарный.
 
     :param: path: путь к файлу
-    :return: данные из файла
+    :return: бинарный файл
     """
 
     try:
@@ -106,5 +106,5 @@ def save_private_key(path: str, private_key: RSAPrivateKey) -> None:
         format=serialization.PrivateFormat.TraditionalOpenSSL,
         encryption_algorithm=serialization.NoEncryption(),
     )
-    
+
     write_binary_file(path, key_data)

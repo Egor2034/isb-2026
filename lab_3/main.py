@@ -1,7 +1,7 @@
 import argparse
 
 from utils import load_config
-from symmetric import *
+
 
 def parse_arguments() -> argparse.Namespace:
     """Функция, которая парсит аргументы командной строки"""
@@ -32,7 +32,6 @@ def main() -> None:
     public_key = args.public_key or settings["public_key"] 
     private_key = args.private_key or settings["private_key"] 
     
-
     print(args.generation, args.encryption, args.decryption)
 
 
