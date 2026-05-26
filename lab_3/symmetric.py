@@ -5,7 +5,11 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
 
 def generate_key() -> bytes:
-    """Данная функция генерирует случайный симметричный ключ SEED длиной 128 бит"""
+    """
+    Данная функция генерирует случайный симметричный ключ SEED длиной 128 бит
+    
+    :return: ключ SEED
+    """
     return os.urandom(16)
 
 
@@ -42,7 +46,7 @@ def decrypt_sym(iv: bytes, c_text: bytes, key: bytes) -> bytes:
     :param: c_text: зашифрованные данные
     :param: key: симметричный ключ длиной 16 байт
 
-    :return: dc_text: расшифрованные данные
+    :return: расшифрованные данные
     """
 
     try:
