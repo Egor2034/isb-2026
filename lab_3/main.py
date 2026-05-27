@@ -6,7 +6,11 @@ from generation import *
 from decryption import *
 
 def parse_arguments() -> argparse.Namespace:
-    """Функция, которая парсит аргументы командной строки"""
+    """
+    Функция, которая парсит аргументы командной строки
+
+    :return: аргументы командной строки
+    """
     parser = argparse.ArgumentParser()
 
     group = parser.add_mutually_exclusive_group(required=True)
