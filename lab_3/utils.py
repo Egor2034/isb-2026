@@ -87,7 +87,7 @@ def save_public_key(path: str, public_key: RSAPublicKey) -> None:
 
     key_data = public_key.public_bytes(
         encoding=serialization.Encoding.PEM,
-        format=serialization.PublicFormat.SubjectPublicKeyInfo,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
     )
 
     write_binary_file(path, key_data)
