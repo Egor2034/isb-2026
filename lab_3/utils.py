@@ -104,7 +104,7 @@ def save_private_key(path: str, private_key: RSAPrivateKey) -> None:
     key_data = private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PrivateFormat.TraditionalOpenSSL,
-        encryption_algorithm=serialization.NoEncryption(),
+        encryption_algorithm=serialization.NoEncryption()
     )
 
     write_binary_file(path, key_data)
